@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio - Robin Henriot</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --couleur-principale: #2563eb;
+            --couleur-survol: #1d4ed8;
+            --couleur-fond: #f8fafc;
+            --couleur-texte: #334155;
+            --couleur-titre: #0f172a;
+        }
+
+        body {
+            background-color: var(--couleur-fond);
+            color: var(--couleur-texte);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bg-bleu-btn { background-color: var(--couleur-principale); }
+        .bg-bleu-btn:hover { background-color: var(--couleur-survol); }
+        .text-bleu { color: var(--couleur-principale); }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-onglet.active {
+            color: var(--couleur-principale);
+            border-bottom: 2px solid var(--couleur-principale);
+            font-weight: 600;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-center md:justify-between items-center h-auto md:h-16 py-2 md:py-0">
+                <div class="font-bold text-xl text-gray-800 mb-2 md:mb-0 hidden md:block">
+                    Robin Henriot
+                </div>
+                
+                <div class="flex space-x-2 md:space-x-6 overflow-x-auto w-full md:w-auto justify-start md:justify-end hide-scrollbar px-2">
+                    <button onclick="changerOnglet('accueil')" id="nav-accueil" class="nav-onglet active px-3 py-3 text-sm md:text-base text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap">Accueil</button>
+                    <button onclick="changerOnglet('qui-je-suis')" id="nav-qui-je-suis" class="nav-onglet px-3 py-3 text-sm md:text-base text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap">Qui je suis</button>
+                    <button onclick="changerOnglet('formation')" id="nav-formation" class="nav-onglet px-3 py-3 text-sm md:text-base text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap">Formation</button>
+                    <button onclick="changerOnglet('pro')" id="nav-pro" class="nav-onglet px-3 py-3 text-sm md:text-base text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap">Activité</button>
+                    <button onclick="changerOnglet('competences')" id="nav-competences" class="nav-onglet px-3 py-3 text-sm md:text-base text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap">Compétences</button>
+                    <button onclick="changerOnglet('contact')" id="nav-contact" class="nav-onglet px-3 py-3 text-sm md:text-base text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap">Contact / CV</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full">
+
+        <!-- 1. ONGLET ACCUEIL -->
+        <section id="accueil" class="tab-content active h-[calc(100vh-64px)] relative overflow-hidden">
+            <video src="PJ.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0"></video>
+            <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+            <div class="relative z-20 max-w-6xl mx-auto px-4 flex flex-col items-center justify-center h-full text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-white drop-shadow-lg">
+                    Robin <span class="text-blue-400">Henriot</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 max-w-2xl mb-12 leading-relaxed drop-shadow-md">
+                    Découvrez qui je suis à travers ce portfolio, mes compétences, mes passions et mes réalisations !
+                </p>
+                <button onclick="changerOnglet('qui-je-suis')" class="bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-blue-500 transition-all transform hover:-translate-y-1 border border-blue-400">
+                    Découvrir qui je suis
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. ONGLET QUI JE SUIS -->
+        <section id="qui-je-suis" class="tab-content">
+            <div class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="color: var(--couleur-titre);">Qui suis-je ?</h2>
+                <div class="bg-white p-6 md:p-10 rounded-2xl shadow-sm mb-12 border border-gray-100">
+                    <p class="mb-5 text-lg leading-relaxed text-gray-700">
+                        Enchanté, je m'appelle Robin Henriot, étudiant en génie mécanique à l'IUT d'Orléans et technicien en bureau des méthodes chez Traven Technology en tant qu'apprenti.
+                    </p>
+                    <p class="mb-8 text-lg leading-relaxed text-gray-700">
+                        Voici une courte vidéo pour me présenter :
+                    </p>
+                    <div class="aspect-[9/16] max-w-sm mx-auto rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/__PGzLJZKMk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button onclick="changerOnglet('formation')" class="bg-bleu-btn text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        Aller à : Formation
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ONGLET FORMATION -->
+        <section id="formation" class="tab-content">
+            <div class="max-w-5xl mx-auto px-4 py-12 md:py-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="color: var(--couleur-titre);">Mon parcours d'études</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 mb-12">
+                    <div class="w-full">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Lyc%C3%A9e_Vaucanson_Tours.jpg" alt="Lycée Vaucanson" class="w-full h-80 object-cover rounded-xl shadow-lg border border-gray-200">
+                    </div>
+                    <div class="w-full flex flex-col justify-center">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900">Lycée Vaucanson</h3>
+                            <span class="text-bleu font-semibold text-lg inline-block mt-1">2021 - 2024</span>
+                        </div>
+                        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                            Obtention de mon baccalauréat en série technologique, avec mention bien, en 2024.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">🎓 Baccalauréat STI2D (Mention Bien)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 mb-12">
+                    <div class="w-full">
+                        <img src="https://www.echosciences-centre-valdeloire.fr/uploads/place/image/attachment/1005405320/lg_IUTOrleans.jpeg" alt="IUT Orléans" class="w-full h-80 object-cover rounded-xl shadow-lg border border-gray-200">
+                    </div>
+                    <div class="w-full flex flex-col justify-center">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900">IUT d'Orléans</h3>
+                            <span class="text-bleu font-semibold text-lg inline-block mt-1">2024 - 2027</span>
+                        </div>
+                        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                            Attiré par la mécanique et l'industrie, j'ai choisi de poursuivre mes études en BUT GMP à l'IUT d'Orléans.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">⚙️ Génie Mécanique (GMP)</span>
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">📐 Bureau des méthodes</span>
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">🏭 Industrialisation</span>
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">🛠️ Conception mécanique</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 mb-12">
+                    <div class="w-full">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmUlkXNn_jpsu1m6wEmawrWYazcSO42KFtriPvpjj3q0CyFwvpWiciIYJx&s=10" alt="Polytech" class="w-full h-80 object-cover rounded-xl shadow-lg border border-gray-200 bg-white">
+                    </div>
+                    <div class="w-full flex flex-col justify-center">
+                        <div class="mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900">Polytech - Cycle préparatoire PeiP D</h3>
+                            <span class="text-bleu font-semibold text-lg inline-block mt-1">2024 - 2027</span>
+                        </div>
+                        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                            En intégrant le BUT GMP, j'ai aussi intégré le cycle préparatoire Polytech (PeiP D). Cela m'a permis de mettre un pied dans le monde des écoles d'ingénieurs, en plus de solidifier mes connaissances dans les matières scientifiques.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">🚀 Cycle préparatoire</span>
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">🔬 Sciences de l'ingénieur</span>
+                            <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold shadow-sm transition-transform hover:scale-105">🎓 Polytech Orléans</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="changerOnglet('pro')" class="bg-bleu-btn text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        Aller à : Activité
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ONGLET ACTIVITÉ (PRO + ACADÉMIQUE) -->
+        <section id="pro" class="tab-content">
+            <div class="max-w-5xl mx-auto px-4 py-12 md:py-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="color: var(--couleur-titre);">Activité Professionnelle</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                    <!-- Projet Pro 1 -->
+                    <div onclick="ouvrirModal(this)" class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md cursor-pointer">
+                        <img src="usimach.jpg" alt="Stage en entreprise" class="w-full h-48 object-cover pointer-events-none">
+                        <div class="p-6 pointer-events-none">
+                            <h3 class="text-xl font-bold mb-2 modal-titre">Stage en entreprise</h3>
+                            <p class="text-gray-600 modal-desc">Dans le cadre de ma deuxième année de BUT GMP, j'ai réalisé un stage de 3 mois chez Traven Technology où j'ai mené une étude sur la mise en production d'une nouvelle référence de pièces.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Projet Pro 2 -->
+                    <div onclick="ouvrirModal(this)" class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md cursor-pointer">
+                        <img src="trav.jpg" alt="Alternance chez Traven Technology" class="w-full h-48 object-cover pointer-events-none">
+                        <div class="p-6 pointer-events-none">
+                            <h3 class="text-xl font-bold mb-2 modal-titre">Alternance chez Traven Technology</h3>
+                            <p class="text-gray-600 modal-desc">J'ai réalisé ma troisième année de BUT GMP en alternance chez Traven Technology. Lors de celle-ci, j'ai mené plusieurs projets : la poursuite de ce que j'avais commencé en stage, l'industrialisation d'une nouvelle référence de pièces, ainsi que la mise en place et la réalisation d'un DOE suite à l'intégration d'une nouvelle machine.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="color: var(--couleur-titre);">Projets Académiques</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <!-- Projet Académique 1 -->
+                    <div onclick="ouvrirModal(this)" data-images="proj1.jpg,proj2.jpg" class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md cursor-pointer">
+                        <img src="proj1.jpg" alt="Projet de BUT 2" class="w-full h-48 object-cover pointer-events-none">
+                        <div class="p-6 pointer-events-none">
+                            <h3 class="text-xl font-bold mb-2 modal-titre">Projet de BUT 2 : intégration d'un capteur de couple sur un banc moteur</h3>
+                            <p class="text-gray-600 modal-desc">Lors de ma deuxième année de BUT GMP, j'ai réalisé un projet qui consistait à intégrer un capteur de force pour mesurer le couple généré par un moteur sur un banc d'essais. Ce projet m'a permis d'acquérir de nouvelles compétences, notamment en électronique et en programmation. Il a aussi été l'occasion de travailler en équipe et de développer des compétences en gestion de projet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <button onclick="changerOnglet('competences')" class="bg-bleu-btn text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        Aller à : Compétences
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ONGLET COMPÉTENCES -->
+        <section id="competences" class="tab-content">
+            <div class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="color: var(--couleur-titre);">Compétences</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    <!-- Compétence 1 : CAO -->
+                    <div onclick="ouvrirModal(this)" class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md cursor-pointer">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZtozET1PdAQjWv5Z35BuwHu8vN2698QJjdo4j1sTvWcLTmZ9j4w-2y2o&s=10" alt="Compétence CAO" class="w-full h-48 object-cover pointer-events-none">
+                        <div class="p-6 pointer-events-none">
+                            <h3 class="text-xl font-bold mb-2 modal-titre">CAO</h3>
+                            <p class="text-gray-600 modal-desc">Maîtrise de plusieurs logiciels de CAO comme TopSolid, Creo et SolidWorks, pour la réalisation de pièces et d'assemblages complexes.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Compétence 2 : Conception mécanique (Video) -->
+                    <div onclick="ouvrirModal(this)" class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100 transition-transform hover:-translate-y-1 hover:shadow-md cursor-pointer">
+                        <video src="CME.mp4" autoplay loop muted playsinline class="w-full h-48 object-cover pointer-events-none"></video>
+                        <div class="p-6 pointer-events-none">
+                            <h3 class="text-xl font-bold mb-2 modal-titre">Conception mécanique</h3>
+                            <p class="text-gray-600 modal-desc">Utilisation et maîtrise de différents systèmes et outils pour la réalisation de systèmes mécaniques complexes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="changerOnglet('contact')" class="bg-bleu-btn text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                        Aller à : Contact / CV
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ONGLET CONTACT / CV -->
+        <section id="contact" class="tab-content">
+            <div class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+                <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center" style="color: var(--couleur-titre);">Contact & CV</h2>
+                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100 mb-12 text-center">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-900">On reste en contact ?</h3>
+                    <p class="text-gray-600 mb-8 text-lg">N'hésitez pas à m'envoyer un message ou à m'appeler directement pour discuter de futurs projets.</p>
+                    <div class="flex flex-col md:flex-row justify-center gap-6 mb-10">
+                        <div class="bg-gray-50 px-6 py-4 rounded-xl border border-gray-200">
+                            <a href="mailto:Rhenriot37@gmail.com" class="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors">✉️ Rhenriot37@gmail.com</a>
+                        </div>
+                        <div class="bg-gray-50 px-6 py-4 rounded-xl border border-gray-200">
+                            <a href="tel:+33783156019" class="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors">📱 07 83 15 60 19</a>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 pt-10 mb-4">
+                        <p class="text-gray-600 mb-6 font-medium">Consultez mon parcours en détail :</p>
+                        <a href="Robin Henriot.pdf" download class="inline-flex items-center justify-center gap-3 bg-bleu-btn text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Télécharger mon CV (PDF)
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button onclick="changerOnglet('accueil')" class="bg-gray-800 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-900 transition-all transform hover:-translate-y-1">
+                        Retourner à l'accueil
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FENÊTRE MODALE POUR AFFICHER LES ACTIVITÉS EN GRAND -->
+    <div id="modal-projet" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-80 p-4 transition-opacity">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl">
+            <!-- Bouton fermer (croix) -->
+            <button onclick="fermerModal()" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center text-2xl font-bold transition-colors">
+                &times;
+            </button>
+            
+            <div class="p-6 md:p-10">
+                <h3 id="modal-titre-cible" class="text-2xl md:text-3xl font-bold mb-6 pr-10 text-gray-900">Titre</h3>
+                
+                <div id="modal-images-container" class="grid gap-4 mb-6">
+                    <!-- Les médias s'afficheront ici dynamiquement -->
+                </div>
+                
+                <p id="modal-desc-cible" class="text-lg text-gray-700 leading-relaxed">Description</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gestion de la navigation par onglets
+        function changerOnglet(tabId) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            const navOnglets = document.querySelectorAll('.nav-onglet');
+            navOnglets.forEach(onglet => onglet.classList.remove('active'));
+
+            const sectionCible = document.getElementById(tabId);
+            if (sectionCible) sectionCible.classList.add('active');
+
+            const boutonCible = document.getElementById('nav-' + tabId);
+            if (boutonCible) boutonCible.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Gestion de la fenêtre modale (agrandissement des projets et compétences)
+        function ouvrirModal(elementCarte) {
+            const modal = document.getElementById('modal-projet');
+            const titreCible = document.getElementById('modal-titre-cible');
+            const descCible = document.getElementById('modal-desc-cible');
+            const conteneurImages = document.getElementById('modal-images-container');
+            
+            // Récupère les textes depuis la carte cliquée
+            const titre = elementCarte.querySelector('.modal-titre').innerText;
+            const description = elementCarte.querySelector('.modal-desc').innerText;
+            
+            // Récupération des médias (images ou vidéos)
+            let medias = [];
+            if (elementCarte.hasAttribute('data-images')) {
+                elementCarte.getAttribute('data-images').split(',').forEach(src => {
+                    medias.push({type: 'img', src: src.trim()});
+                });
+            } else {
+                let img = elementCarte.querySelector('img');
+                if (img) medias.push({type: 'img', src: img.src});
+                
+                let vid = elementCarte.querySelector('video');
+                if (vid) medias.push({type: 'video', src: vid.getAttribute('src')});
+            }
+
+            // Remplit la modale
+            titreCible.innerText = titre;
+            descCible.innerText = description;
+            
+            // Génère l'affichage des médias (images ou vidéos)
+            conteneurImages.innerHTML = '';
+            medias.forEach(media => {
+                if(media.type === 'img') {
+                    conteneurImages.innerHTML += `<img src="${media.src}" class="w-full h-auto object-cover rounded-xl border border-gray-200" alt="Illustration">`;
+                } else if(media.type === 'video') {
+                    conteneurImages.innerHTML += `<video src="${media.src}" autoplay loop muted playsinline class="w-full h-auto rounded-xl border border-gray-200"></video>`;
+                }
+            });
+            
+            // Ajuste la grille selon le nombre de médias
+            conteneurImages.className = medias.length > 1 ? 'grid grid-cols-1 md:grid-cols-2 gap-4 mb-6' : 'grid gap-4 mb-6';
+
+            // Affiche la modale et bloque le défilement de l'arrière-plan
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fermerModal() {
+            const modal = document.getElementById('modal-projet');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+            
+            // Stop la vidéo si elle joue dans la modale à la fermeture
+            const videoInsideModal = document.querySelector('#modal-images-container video');
+            if (videoInsideModal) {
+                videoInsideModal.pause();
+                videoInsideModal.removeAttribute('src'); 
+                videoInsideModal.load();
+            }
+        }
+        
+        // Ferme la modale si on clique à l'extérieur de la zone blanche
+        document.getElementById('modal-projet').addEventListener('click', function(e) {
+            if (e.target === this) {
+                fermerModal();
+            }
+        });
+    </script>
+</body>
+</html>
